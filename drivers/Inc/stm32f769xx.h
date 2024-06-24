@@ -9,6 +9,7 @@
 #define INC_STM32F769XX_H_
 
 #include <stdint.h>
+#include <stdio.h>
 
 #define __vo  volatile
 
@@ -259,46 +260,134 @@ typedef struct {
 /*
  * Clock Enable Macros for SPIx peripherals
  */
+#define SPI1_PCLK_EN()           ( RCC->APB2ENR |= ( 1 << 12 ) ) 
+#define SPI2_PCLK_EN()           ( RCC->APB1ENR |= ( 1 << 14 ) )
+#define SPI3_PCLK_EN()           ( RCC->APB1ENR |= ( 1 << 15 ) )
+#define SPI4_PCLK_EN()           ( RCC->APB2ENR |= ( 1 << 13 ) )
+#define SPI5_PCLK_EN()           ( RCC->APB2ENR |= ( 1 << 20 ) )
+#define SPI6_PCLK_EN()           ( RCC->APB2ENR |= ( 1 << 21 ) )
 
 /*
  * Clock Enable Macros for USARTx peripherals
  */
-
+#define USART1_PCLK_EN()         ( RCC->APB2ENR |= ( 1 << 4  ) ) 
+#define USART2_PCLK_EN()         ( RCC->APB1ENR |= ( 1 << 17 ) )
+#define USART3_PCLK_EN()         ( RCC->APB1ENR |= ( 1 << 18 ) )
+#define UART4_PCLK_EN()          ( RCC->APB1ENR |= ( 1 << 19 ) )
+#define UART5_PCLK_EN()          ( RCC->APB1ENR |= ( 1 << 20 ) )
+#define USART6_PCLK_EN()         ( RCC->APB2ENR |= ( 1 << 5  ) )
 /*
  * Clock Enable Macros for SYSCFG peripherals
  */
+#define SYSCFG_PCLK_EN()         (RCC->APB2ENR |= ( 1 << 14 ) )
 
 /*
  * Clock Enable Macros for TIMx peripherals
  */
-
-
-
-
+#define TIM1_PCLK_EN()            (RCC->APB2ENR |= ( 1 << 0 ) )
+#define TIM2_PCLK_EN()            (RCC->APB1ENR |= ( 1 << 0 ) )
+#define TIM3_PCLK_EN()            (RCC->APB1ENR |= ( 1 << 1 ) )
+#define TIM4_PCLK_EN()            (RCC->APB1ENR |= ( 1 << 2 ) )
+#define TIM5_PCLK_EN()            (RCC->APB1ENR |= ( 1 << 3 ) )
+#define TIM6_PCLK_EN()            (RCC->APB1ENR |= ( 1 << 4 ) )
+#define TIM7_PCLK_EN()            (RCC->APB1ENR |= ( 1 << 5 ) )
+#define TIM8_PCLK_EN()            (RCC->APB2ENR |= ( 1 << 1 ) )
+#define TIM9_PCLK_EN()            (RCC->APB2ENR |= ( 1 << 16 ) )
+#define TIM10_PCLK_EN()           (RCC->APB2ENR |= ( 1 << 17 ) )
+#define TIM11_PCLK_EN()           (RCC->APB2ENR |= ( 1 << 18 ) )
+#define TIM12_PCLK_EN()           (RCC->APB1ENR |= ( 1 << 6 ) )
+#define TIM13_PCLK_EN()           (RCC->APB1ENR |= ( 1 << 7 ) )
+#define TIM14_PCLK_EN()           (RCC->APB1ENR |= ( 1 << 8 ) )
 
 /*
  * Clock Disable Macros for GPIOx peripherals
  */
+#define GPIOA_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 0) )
+#define GPIOB_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 1) )
+#define GPIOC_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 2) )
+#define GPIOD_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 3) )
+#define GPIOE_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 4) )
+#define GPIOF_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 5) )
+#define GPIOG_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 6) )
+#define GPIOH_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 7) )
+#define GPIOI_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 8) )
+#define GPIOJ_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 9) )
+#define GPIOK_PCLK_DI()           ( RCC->AHB1ENR &= ~( 1 << 10))
 
 /*
  * Clock Disable Macros for I2Cx peripherals
  */
+#define I2C1_PCLK_DI()           ( RCC->APB1ENR &= ~( 1 << 21) )
+#define I2C2_PCLK_DI()           ( RCC->APB1ENR &= ~( 1 << 22) )
+#define I2C3_PCLK_DI()           ( RCC->APB1ENR &= ~( 1 << 23) )
+#define I2C4_PCLK_DI()           ( RCC->APB1ENR &= ~( 1 << 24) )
 
 /*
  * Clock Disable Macros for SPIx peripherals
  */
+#define SPI1_PCLK_DI()           ( RCC->APB2ENR &= ~( 1 << 12 ) ) 
+#define SPI2_PCLK_DI()           ( RCC->APB1ENR &= ~( 1 << 14 ) )
+#define SPI3_PCLK_DI()           ( RCC->APB1ENR &= ~( 1 << 15 ) )
+#define SPI4_PCLK_DI()           ( RCC->APB2ENR &= ~( 1 << 13 ) )
+#define SPI5_PCLK_DI()           ( RCC->APB2ENR &= ~( 1 << 20 ) )
+#define SPI6_PCLK_DI()           ( RCC->APB2ENR &= ~( 1 << 21 ) )
 
 /*
  * Clock Disable Macros for USARTx peripherals
  */
-
+#define USART1_PCLK_DI()         ( RCC->APB2ENR &= ~( 1 << 4  ) ) 
+#define USART2_PCLK_DI()         ( RCC->APB1ENR &= ~( 1 << 17 ) )
+#define USART3_PCLK_DI()         ( RCC->APB1ENR &= ~( 1 << 18 ) )
+#define UART4_PCLK_DI()          ( RCC->APB1ENR &= ~( 1 << 19 ) )
+#define UART5_PCLK_DI()          ( RCC->APB1ENR &= ~( 1 << 20 ) )
+#define USART6_PCLK_DI()         ( RCC->APB2ENR &= ~( 1 << 5  ) )
 /*
  * Clock Disable Macros for SYSCFG peripherals
  */
+#define SYSCFG_PCLK_DI()         (RCC->APB2ENR &= ~( 1 << 14 ) )
 
 /*
  * Clock Disable Macros for TIMx peripherals
  */
+#define TIM1_PCLK_DI()            (RCC->APB2ENR &= ~( 1 << 0 ) )
+#define TIM2_PCLK_DI()            (RCC->APB1ENR &= ~( 1 << 0 ) )
+#define TIM3_PCLK_DI()            (RCC->APB1ENR &= ~( 1 << 1 ) )
+#define TIM4_PCLK_DI()            (RCC->APB1ENR &= ~( 1 << 2 ) )
+#define TIM5_PCLK_DI()            (RCC->APB1ENR &= ~( 1 << 3 ) )
+#define TIM6_PCLK_DI()            (RCC->APB1ENR &= ~( 1 << 4 ) )
+#define TIM7_PCLK_DI()            (RCC->APB1ENR &= ~( 1 << 5 ) )
+#define TIM8_PCLK_DI()            (RCC->APB2ENR &= ~( 1 << 1 ) )
+#define TIM9_PCLK_DI()            (RCC->APB2ENR &= ~( 1 << 16 ) )
+#define TIM10_PCLK_DI()           (RCC->APB2ENR &= ~( 1 << 17 ) )
+#define TIM11_PCLK_DI()           (RCC->APB2ENR &= ~( 1 << 18 ) )
+#define TIM12_PCLK_DI()           (RCC->APB1ENR &= ~( 1 << 6 ) )
+#define TIM13_PCLK_DI()           (RCC->APB1ENR &= ~( 1 << 7 ) )
+#define TIM14_PCLK_DI()           (RCC->APB1ENR &= ~( 1 << 8 ) )
 
+/*
+ * GPIO Peripheral Reset Macros
+ */
+#define GPIOA_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 0  ) ); (RCC->AHB1RSTR &= ~( 1 << 0  ) ); }while(0)
+#define GPIOB_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 1  ) ); (RCC->AHB1RSTR &= ~( 1 << 1  ) ); }while(0)
+#define GPIOC_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 2  ) ); (RCC->AHB1RSTR &= ~( 1 << 2  ) ); }while(0)
+#define GPIOD_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 3  ) ); (RCC->AHB1RSTR &= ~( 1 << 3  ) ); }while(0)
+#define GPIOE_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 4  ) ); (RCC->AHB1RSTR &= ~( 1 << 4  ) ); }while(0)
+#define GPIOF_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 5  ) ); (RCC->AHB1RSTR &= ~( 1 << 5  ) ); }while(0)
+#define GPIOG_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 6  ) ); (RCC->AHB1RSTR &= ~( 1 << 6  ) ); }while(0)
+#define GPIOH_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 7  ) ); (RCC->AHB1RSTR &= ~( 1 << 7  ) ); }while(0)
+#define GPIOI_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 8  ) ); (RCC->AHB1RSTR &= ~( 1 << 8  ) ); }while(0)
+#define GPIOJ_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 9  ) ); (RCC->AHB1RSTR &= ~( 1 << 9  ) ); }while(0)
+#define GPIOK_REG_RESET()         do{ (RCC->AHB1RSTR |= ( 1 << 10 ) ); (RCC->AHB1RSTR &= ~( 1 << 10 ) ); }while(0)
+
+
+/*
+ * Some Generic Macros
+ */
+#define ENABLE  1
+#define DISABLE 0
+#define SET     ENABLE
+#define RESET   DISABLE
+
+#include "stm32f769xx_gpio.h"
 
 #endif /* INC_STM32F769XX_H_ */
